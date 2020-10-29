@@ -1,0 +1,102 @@
+// fn insert_sort_fast(a: &mut Vec<f64>) {
+//     let mut swap = true;
+//     while swap {
+//         swap = false;
+//         for i in 0..a.len()-1 {
+//             if a[i] > a[i+1] {
+//                 swap = true;
+//                 a.swap(i , i+1);
+//             }
+//         }
+//     }
+// }
+
+// fn merge_sort_fast(a: &mut Vec<f64>, b: usize, e: usize) {
+//     if b < e {
+//         let m = (b+e)/2;
+//         merge_sort_fast(a, b, m);
+//         merge_sort_fast(a, m+1, e);
+//         merge_fast(a, b, m, e);
+//     }
+// }
+
+// fn merge_fast(a: &mut Vec<f64>, b: usize, m:usize, e:usize) {
+//     let left_vec = a[b..m+1].to_vec();
+//     let mut left = left_vec.iter().peekable();
+//     let right_vec = a[m+1..e+1].to_vec();
+//     let mut right = right_vec.iter().peekable();
+//     for k in b..e + 1 {
+//         if left.peek().is_none() {
+//             a[k] = *right.next().unwrap();
+//             continue;
+//         }
+//         if right.peek().is_none() {
+//             a[k] = *left.next().unwrap();
+//             continue;
+//         }
+//         if right.peek().unwrap() < left.peek().unwrap() {
+//             a[k] = *right.next().unwrap();
+//         }
+//         else {
+//             a[k] = *left.next().unwrap();
+//         }
+//     }
+// }
+
+
+
+// This function is inspired by the code originally written 
+// by Dr. Charles Ofria and published here:
+// https://raw.githubusercontent.com/mercere99/CSE-830/master/InClass/Week2/TestSorts.cc
+// fn merge(v: &mut Vec<f64>, start: usize, midpoint: usize, end: usize) {
+//     let mut merged = Vec::new(); // Q: How do we know the type? A: Rust's smart type inferece!
+
+//     let mut p1 = start;
+//     let mut p2 = midpoint;
+
+//     while p1 < midpoint && p2 < end {
+//         if v[p1] < v[p2] {
+//             merged.push(v[p1]);
+//             p1 += 1;
+//         }
+//         else {
+//             merged.push(v[p2]);
+//             p2 += 1;
+//         }
+//     }
+
+//     while p1 < midpoint {
+//         merged.push(v[p1]);
+//         p1 += 1;
+//     }
+//     while p2 < end {
+//         merged.push(v[p2]);
+//         p2 += 1;
+//     }
+
+//     let mut i = 0;
+//     for a in &merged {
+//         v[start + i] = *a;
+//         i += 1;
+//     }
+// }
+
+
+// This function is inspired by the code originally written 
+// by Dr. Charles Ofria and published here:
+// https://raw.githubusercontent.com/mercere99/CSE-830/master/InClass/Week2/TestSorts.cc
+// fn merge_sort(v: &mut Vec<f64>, start: isize, mut end: isize)
+// {
+//     if end == -1 {
+//         end = v.len() as isize;
+//     }
+
+//     if end - start < 2 {
+//         return;
+//     }
+
+//     let midpoint: isize = (start + end) / 2;
+//     merge_sort(v, start, midpoint);
+//     merge_sort(v, midpoint, end);
+//     merge(v, start as usize, midpoint as usize, end as usize);
+// }
